@@ -40,6 +40,12 @@ export default ({ store, router }) => {
     }
   },
     error => {
+      if (error.response.status === 401)
+      {
+        alert('请先登录！')
+        location.href = '/login'
+        return false
+      }
       alert('请求失败，请稍后重试！')
       return Promise.reject(error)
     }
